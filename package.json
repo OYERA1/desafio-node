@@ -1,0 +1,12 @@
+{
+	"name": "desafionode",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "Desafio node rocketseat",
+	"main": "index.js",
+	"scripts": {
+		"dev": "node --watch src/server.js"
+	},
+	"author": "",
+	"license": "ISC"
+}

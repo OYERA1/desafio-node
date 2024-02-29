@@ -20,12 +20,19 @@ export const routes = [
 		method: "POST",
 		path: buildRoutePath("/tasks"),
 		handler: (req, res) => {
-			const { taskName, taskTitle, taskDescription } = req.body;
+			switch (true) {
+				case !req.body:
+					return res.writeHead(400).end();
+				case !req.body.taskTitle:
+					return res.writeHead(400).end();
+				case !req.body.taskDescription:
+					return res.writeHead(400).end();
+			}
+			const { taskTitle, taskDescription } = req.body;
 			const { day, month, year } = getDate();
 
 			const response = db.createTask("tasks", {
 				id: randomUUID(),
-				taskName,
 				taskTitle,
 				taskDescription,
 				created_at: `${month}/${day}/${year}`,
@@ -55,6 +62,17 @@ export const routes = [
 		method: "PUT",
 		path: buildRoutePath("/tasks/:id"),
 		handler: (req, res) => {
+			switch (true) {
+				case !req.body:
+					return res.writeHead(400).end();
+				case !req.body.taskTitle:
+					return res.writeHead(400).end();
+				case !req.body.taskDescription:
+					return res.writeHead(400).end();
+				case !req.params:
+					return res.writeHead(400).end();
+			}
+
 			const { id } = req.params;
 			const { taskTitle, taskDescription } = req.body;
 			const response = db.updateTask(

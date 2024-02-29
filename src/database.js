@@ -26,6 +26,7 @@ export class Database {
 	#persist() {
 		// Escreve num arquivo .json "fisico", dentro de uma pasta, todos os dados
 		// do banco de dados
+
 		writeFile(databasePath, JSON.stringify(this.#database));
 	}
 
@@ -36,32 +37,17 @@ export class Database {
 	}
 
 	createTask(table, data) {
-		// Cria um anova task na tabela que foi nomeada pelas rotas ao chamar
-		// a função
-		for (const prop in data) {
-			if (data[prop] === undefined || null) {
-				// Retorna uma mensagem de erro mostrando qual prop está vazia
-				return {
-					message: `O campo '${prop}' não existe.`,
-					ok: false,
-				};
-			}
-		}
-
 		// Verifica se a tabela existe
 		if (Array.isArray(this.#database[table])) {
-			// Se não existir, cria uma nova tabela com os valores passados
-			// na data
 			this.#database[table].push(data);
+			this.#persist();
+			return { message: "Task criada!", ok: true, data: data };
 		}
-
 		// Se existir, armazena a data na tabela designada
 		this.#database[table] = [data];
-
 		this.#persist();
-
 		// Retorna uma mensagem de sucesso e o conteúdo que foi salvo
-		return { message: "Usuário criado!", ok: true, data: data };
+		return { message: "Task criada!", ok: true };
 	}
 
 	deleteTask(table, id) {

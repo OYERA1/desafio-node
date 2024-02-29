@@ -1,6 +1,6 @@
 # Desafio Node Ignite
 
-### Para iniciar o projeto, primeiro rode o comando "npm run dev" na pasta raiz do projeto, o servidor irá iniciar
+### Para iniciar o projeto, primeiro instale as dependencias com `npm i` e depois rode o comando `npm run dev` na pasta raiz do projeto, o servidor irá iniciar
 
 * #### GET
 >Mande uma requisição GET para ==http://localhost:3333/tasks== para obter todas as tasks do banco de dados em formato de array

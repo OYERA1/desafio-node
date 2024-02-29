@@ -21,7 +21,7 @@
 
 
 * #### PURGE
->Requisição especial para limpar o banco de dados para testes, mande uma requisição PURGE para ==http://localhost:3333/tasks== com o body 
+>Requisição especial para limpar o banco de dados para testes, mande uma requisição PURGE para http://localhost:3333/tasks com o body 
 	{
 		"kill": "purge"
 	} 

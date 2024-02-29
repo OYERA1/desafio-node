@@ -27,3 +27,12 @@
 	} 
 >para limpar o banco de dados
 
+***
+# Formato JSON esperado
+
+~~~json
+{
+	"taskTitle": "<Algum Texto>",
+	"taskDescription": "<Algum Texto>"
+}
+~~~
